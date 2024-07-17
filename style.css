@@ -1,65 +1,55 @@
-*{
-    margin: 0;
-    padding: 0;
-    box-sizing: border-box;
-}
-img{
-    width: 100%;
-    height: 100%;
-    object-fit: cover;
-}
-h1,
-.container{
-    margin: 0 auto;
-    width: 800px; 
-    overflow: hidden;
-}
-h1{
+
+
+header {
     text-align: center;
     margin-bottom: 20px;
 }
-main{
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-    align-items: center;
-    height: 100vh;
-    margin: 0;
-}
+
 .container {
-    position: relative;
     width: 80%;
+    margin: 0 auto;
+    height: 80vh;
     max-width: 800px;
-    height: 400px;
     overflow: hidden;
     border: 2px solid #ccc;
     border-radius: 10px;
+    background-color: white;
+    display: flex;
+    justify-content: center;
+    align-items: center;
 }
 
-#image-container {
-    display: flex;
-    flex-direction: column;
+
+
+#image-container img {
+    display: none;
+    width: 100%;
     height: 100%;
-    transition: transform 0.5s ease-in-out;
+    object-fit: contain;
 }
-.back,
-.next {
+
+#image-container img.active {
+    display: block;
+}
+
+.back, .next {
     position: absolute;
-    left: 50%;
-    transform: translateX(-50%);
-    background-color: blue;
+    top: 50%;
+    transform: translateY(-50%);
+    background-color: rgba(0, 0, 0, 0.5);
     color: white;
     border: none;
     padding: 10px;
     cursor: pointer;
     border-radius: 50%;
     font-size: 18px;
+    z-index: 10; /* Assicurarsi che i pulsanti siano sopra le immagini */
 }
 
 .back {
-    top: 10px;
+    left: 25%;
 }
 
 .next {
-    bottom: 10px;
+    right: 25%;
 }

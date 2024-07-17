@@ -1,5 +1,5 @@
-// Array delle immagini
 
+// Array delle immagini
 let imageArray = [
     'img/01.webp',
     'img/02.webp',
@@ -9,49 +9,41 @@ let imageArray = [
 ];
 
 // Seleziona il contenitore delle immagini
+let imageContainer = document.getElementById('image-container');
 
-let imagecontainer = document.getElementById('image-container');
-
-//Usa un ciclo for per iterare sull'array e creare img
-
+// Usa un ciclo for per iterare sull'array e creare img dinamicamente
 for (let i = 0; i < imageArray.length; i++) {
     const img = document.createElement('img');
     img.src = imageArray[i];
-    img.alt = 'Img' + (i + 1);
-    imagecontainer.append(img);
+    img.alt = 'Image' + (i + 1);
+    if (i == 0) {
+        img.classList.add('active');
+    }
+    imageContainer.appendChild(img);
 }
 
-let indice = 0;
+let currentIndex = 0;
 
 // Funzione per mostrare l'immagine precedente
-
 function backImage() {
-    if (indice == 0) {
-        indice = imageArray.length - 1;
-    } 
-    else {
-        indice--;
+    let images = document.querySelectorAll('#image-container img');
+    images[currentIndex].classList.remove('active');
+    if (currentIndex == 0) {
+        currentIndex = imageArray.length - 1;
+    } else {
+        currentIndex--;
     }
-    aggiornamento();
+    images[currentIndex].classList.add('active');
 }
 
 // Funzione per mostrare l'immagine successiva
 function nextImage() {
-    if (indice == imageArray.length - 1) {
-        indice = 0;
+    let images = document.querySelectorAll('#image-container img');
+    images[currentIndex].classList.remove('active');
+    if (currentIndex == imageArray.length - 1) {
+        currentIndex = 0;
+    } else {
+        currentIndex++;
     }
-    else {
-        indice++;
-    }
-    aggiornamento();
+    images[currentIndex].classList.add('active');
 }
-
-
-// Funzione per aggiornare la posizione del carosello
-
-function aggiornamento() {
-    const offset = -indice * 100;
-    imagecontainer.style.transform = 'translateY(' + offset + '%)';
-}
-// Inizializzazione del carosello
-aggiornamento();
