@@ -4,9 +4,62 @@
     box-sizing: border-box;
 }
 img{
-    max-width:100%;
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+}
+h1,
+.container{
+    margin: 0 auto;
+    width: 800px; 
+    overflow: hidden;
+}
+h1{
+    text-align: center;
+    margin-bottom: 20px;
+}
+main{
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+    margin: 0;
+}
+.container {
+    position: relative;
+    width: 80%;
+    max-width: 800px;
+    height: 400px;
+    overflow: hidden;
+    border: 2px solid #ccc;
+    border-radius: 10px;
 }
 
-.container{
-    width: 500px; 
+#image-container {
+    display: flex;
+    flex-direction: column;
+    height: 100%;
+    transition: transform 0.5s ease-in-out;
+}
+.back,
+.next {
+    position: absolute;
+    left: 50%;
+    transform: translateX(-50%);
+    background-color: blue;
+    color: white;
+    border: none;
+    padding: 10px;
+    cursor: pointer;
+    border-radius: 50%;
+    font-size: 18px;
+}
+
+.back {
+    top: 10px;
+}
+
+.next {
+    bottom: 10px;
 }

@@ -1,4 +1,5 @@
-// Array di URL delle immagini
+// Array delle immagini
+
 let imageArray = [
     'img/01.webp',
     'img/02.webp',
@@ -19,3 +20,38 @@ for (let i = 0; i < imageArray.length; i++) {
     img.alt = 'Img' + (i + 1);
     imagecontainer.append(img);
 }
+
+let indice = 0;
+
+// Funzione per mostrare l'immagine precedente
+
+function backImage() {
+    if (indice == 0) {
+        indice = imageArray.length - 1;
+    } 
+    else {
+        indice--;
+    }
+    aggiornamento();
+}
+
+// Funzione per mostrare l'immagine successiva
+function nextImage() {
+    if (indice == imageArray.length - 1) {
+        indice = 0;
+    }
+    else {
+        indice++;
+    }
+    aggiornamento();
+}
+
+
+// Funzione per aggiornare la posizione del carosello
+
+function aggiornamento() {
+    const offset = -indice * 100;
+    imagecontainer.style.transform = 'translateY(' + offset + '%)';
+}
+// Inizializzazione del carosello
+aggiornamento();
